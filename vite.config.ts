@@ -13,9 +13,7 @@ export default defineConfig({
           await import("@replit/vite-plugin-cartographer").then((m) =>
             m.cartographer(),
           ),
-          await import("@replit/vite-plugin-dev-banner").then((m) =>
-            m.devBanner(),
-          ),
+          // Replit dev banner disabled in favor of a custom in-app badge.
         ]
       : []),
   ],
