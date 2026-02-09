@@ -76,7 +76,7 @@ export default function Home() {
     <div className="flex flex-col h-full bg-slate-50/50 dark:bg-slate-900/50">
       <div className="p-4 border-b bg-white/50 dark:bg-slate-950/50 backdrop-blur-sm sticky top-0 z-10 flex justify-between items-center">
         <h1 className="text-xl font-bold font-display text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600">
-          AI Chat
+          Anish AI
         </h1>
         <ThemeToggle />
       </div>
@@ -250,7 +250,7 @@ export default function Home() {
           <div className="flex-1 flex flex-col h-full bg-slate-50/50">
             {/* Mobile Header */}
             <div className="md:hidden p-4 border-b bg-white dark:bg-slate-950 sticky top-0 z-10 flex justify-between items-center">
-               <h1 className="text-xl font-bold font-display text-primary">AI Chat</h1>
+               <h1 className="text-xl font-bold font-display text-primary">Anish AI</h1>
                <ThemeToggle />
             </div>
 
