@@ -27,6 +27,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
@@ -72,11 +73,12 @@ export default function Home() {
 
   // Render Sidebar Content (reused for desktop and mobile)
   const SidebarContent = () => (
-    <div className="flex flex-col h-full bg-slate-50/50">
-      <div className="p-4 border-b bg-white/50 backdrop-blur-sm sticky top-0 z-10">
+    <div className="flex flex-col h-full bg-slate-50/50 dark:bg-slate-900/50">
+      <div className="p-4 border-b bg-white/50 dark:bg-slate-950/50 backdrop-blur-sm sticky top-0 z-10 flex justify-between items-center">
         <h1 className="text-xl font-bold font-display text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600">
           AI Chat
         </h1>
+        <ThemeToggle />
       </div>
       
       <div className="flex-1 overflow-y-auto p-4 space-y-2">
@@ -162,31 +164,43 @@ export default function Home() {
                 </div>
               </div>
 
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground">
-                    <MoreVertical className="h-5 w-5" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuLabel>Options</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem 
-                    onClick={handleClearHistory}
-                    className="text-orange-600 focus:text-orange-700"
-                  >
-                    <MessageSquareOff className="mr-2 h-4 w-4" />
-                    Clear History
-                  </DropdownMenuItem>
-                  <DropdownMenuItem 
-                    onClick={() => handleDeleteCharacter(activeCharacter.id)}
-                    className="text-destructive focus:text-destructive"
-                  >
-                    <Trash2 className="mr-2 h-4 w-4" />
-                    Delete Character
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <div className="flex items-center gap-2">
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={handleClearHistory}
+                  className="hidden sm:flex text-muted-foreground hover:text-orange-600 gap-1.5"
+                >
+                  <MessageSquareOff className="h-4 w-4" />
+                  Clear
+                </Button>
+                
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground">
+                      <MoreVertical className="h-5 w-5" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuLabel>Options</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem 
+                      onClick={handleClearHistory}
+                      className="text-orange-600 focus:text-orange-700"
+                    >
+                      <MessageSquareOff className="mr-2 h-4 w-4" />
+                      Clear History
+                    </DropdownMenuItem>
+                    <DropdownMenuItem 
+                      onClick={() => handleDeleteCharacter(activeCharacter.id)}
+                      className="text-destructive focus:text-destructive"
+                    >
+                      <Trash2 className="mr-2 h-4 w-4" />
+                      Delete Character
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
             </header>
 
             {/* Chat Messages */}
@@ -198,7 +212,7 @@ export default function Home() {
             />
 
             {/* Input Area */}
-            <div className="p-4 bg-white/80 backdrop-blur-md border-t">
+            <div className="p-4 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-t">
               <form 
                 onSubmit={handleSend}
                 className="max-w-4xl mx-auto relative flex gap-2 items-end"
@@ -235,9 +249,9 @@ export default function Home() {
           // Empty State / Mobile List View
           <div className="flex-1 flex flex-col h-full bg-slate-50/50">
             {/* Mobile Header */}
-            <div className="md:hidden p-4 border-b bg-white sticky top-0 z-10 flex justify-between items-center">
+            <div className="md:hidden p-4 border-b bg-white dark:bg-slate-950 sticky top-0 z-10 flex justify-between items-center">
                <h1 className="text-xl font-bold font-display text-primary">AI Chat</h1>
-               {/* Mobile Sidebar Trigger (not needed if we just show list here on mobile) */}
+               <ThemeToggle />
             </div>
 
             {/* On Desktop: Welcome Screen */}
