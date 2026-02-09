@@ -65,4 +65,5 @@ Roadmap ideas
 - Message streaming
 - Image and audio tools in chat
 - Per-character memory and summaries
+- -----------********Thank you!!*****------------
 
