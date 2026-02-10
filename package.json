@@ -4,9 +4,9 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "dev": "set NODE_ENV=development&& node node_modules/tsx/dist/cli.mjs server/index.ts",
+    "dev": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development node node_modules/tsx/dist/cli.mjs server/index.ts",
     "build": "node node_modules/tsx/dist/cli.mjs script/build.ts",
-    "start": "set NODE_ENV=production&& node dist/index.cjs",
+    "start": "node node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=production node dist/index.cjs",
     "check": "tsc",
     "db:push": "drizzle-kit push"
   },
